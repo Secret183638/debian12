@@ -1,0 +1,6 @@
+wget https://drive.google.com/uc?export=download&id=1iEC61u4XBjZw1M1IeiozHduzmE7zMm92
+qemu-img create -f qcow2 arm.qcow2 3G
+echo qemu-img create -f qcow2 arm.qcow2 3G >> start
+echo qemu-system-arm64 -enable-kvm -m 2048 -cdrom debian.iso -net nic,model=virtio -net user -boot d -hda arm.qcow2 >> start
+chmod +x *
+qemu-system-arm64 -m 2048 -cdrom debian.iso -boot d -net nic,model=virtio -net user -hda arm.qcow2
